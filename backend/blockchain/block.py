@@ -1,5 +1,5 @@
 from datetime import datetime
-from crypto_hash import crypto_hash
+from backend.utils.crypto_hash import crypto_hash
 
 def genesis():
     """

@@ -1,5 +1,5 @@
-from block import Block, genesis
-from crypto_hash import crypto_hash
+from backend.blockchain.block import Block, genesis
+from backend.utils.crypto_hash import crypto_hash
 
 class Blockchain:
     """
