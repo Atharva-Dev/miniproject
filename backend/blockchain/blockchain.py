@@ -17,6 +17,20 @@ class Blockchain:
     def __repr__(self):
         return "\n".join(list(map(str,self.chain)))
 
+    @staticmethod
+    def is_valid_chain(chain):
+
+        try:
+            if chain[0] != genesis():
+                raise Exception('The genesis block is invalid')
+            
+            for i in range(1, len(chain)):
+                block = chain[i]
+                last_block = chain[i-1]
+                Block.is_valid_block(last_block,block)
+        except Exception as e:
+            print(f'inside is_valid_chain: {e}')
+
 
 
 def main():
