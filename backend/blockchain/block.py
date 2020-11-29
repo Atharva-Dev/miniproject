@@ -43,6 +43,9 @@ class Block:
             f'hash: {self.hash}, '
             f'last_hash: {self.last_hash} )'
         )
+    
+    def __eq__(self, other):
+        return self.__dict__==other.__dict__
 
     @staticmethod
     def is_valid_block(last_block, block):
@@ -65,7 +68,7 @@ def main():
     new.set_arrival_time()
     new.set_dispatch_time()
     new.add_attr('quantity', 10)
-    
+    new.hash = crypto_hash(new)
     Block.is_valid_block(g, new)
 
 if __name__ == "__main__":

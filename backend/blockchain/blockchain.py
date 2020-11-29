@@ -14,6 +14,16 @@ class Blockchain:
         block.hash = crypto_hash(block)
         self.chain.append(block)
 
+    def replace_chain(self, chain):
+        if len(chain) <= len(self.chain):
+            raise Exception('Cannot replace, new chain must be longer')
+        try:
+            Blockchain.is_valid_chain(chain)
+        except Exception as e:
+            raise Exception('Cannot replace, new chain is invalid: {e}')
+
+        self.chain = chain 
+
     def __repr__(self):
         return "\n".join(list(map(str,self.chain)))
 
