@@ -27,6 +27,7 @@ class Blockchain:
     def __repr__(self):
         return "\n".join(list(map(str,self.chain)))
 
+
     @staticmethod
     def is_valid_chain(chain):
 
