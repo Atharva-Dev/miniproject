@@ -6,7 +6,8 @@ class Blockchain:
     Blockchain class holds list of blocks and operations
     """
 
-    def __init__(self):
+    def __init__(self, name='chain'):
+        self.name = name
         self.chain = [genesis()]
     
     def add_block(self, block):
@@ -23,6 +24,9 @@ class Blockchain:
             raise Exception('Cannot replace, new chain is invalid: {e}')
 
         self.chain = chain 
+
+    def to_json(self):
+        return list(map(lambda block: block.to_json(),self.chain))
 
     def __repr__(self):
         return "\n".join(list(map(str,self.chain)))

@@ -34,6 +34,9 @@ class Block:
     def set_dispatch_time(self):
         self.dispatch_time = datetime.now().strftime("%B %d %Y, %H:%M")
 
+    def to_json(self):
+        return self.__dict__
+
     def __repr__(self):
         return (
             'Block('
