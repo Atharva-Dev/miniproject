@@ -44,11 +44,29 @@ class Block:
             f'last_hash: {self.last_hash} )'
         )
 
+    @staticmethod
+    def is_valid_block(last_block, block):
+
+        try:
+            if block.last_hash != last_block.hash:
+                raise Exception('The block last_hash is incorect')
+            if block.hash != crypto_hash(block):
+                raise Exception('The block hash is incorrect')
+        except Exception as e:
+            print(f'inside is_valid_block: {e}')
+
 
 
 
 def main():
-    print(genesis())
+    g = genesis()
+    new = Block()
+    new.last_hash = g.hash
+    new.set_arrival_time()
+    new.set_dispatch_time()
+    new.add_attr('quantity', 10)
+    
+    Block.is_valid_block(g, new)
 
 if __name__ == "__main__":
     main()
