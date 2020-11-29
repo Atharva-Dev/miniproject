@@ -6,8 +6,8 @@ def genesis():
     Generate The Genesis block
     """
     genesis_block = Block()
-    genesis_block.set_arrival_time()
-    genesis_block.set_dispatch_time()
+    genesis_block.arrival_time = 0
+    genesis_block.dispatch_time = 0
     genesis_block.last_hash = 'last_hash'
     genesis_block.hash = crypto_hash(genesis_block)
     return genesis_block
