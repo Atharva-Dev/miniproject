@@ -64,7 +64,8 @@ class Block:
             raise Exception(f'inside is_valid_block: {e}')
 
     @staticmethod
-    def to_block(data):
+    def from_json(data):
+        print(data)
         block = Block()
         block.data = data['data']
         block.arrival_time = data['arrival_time']

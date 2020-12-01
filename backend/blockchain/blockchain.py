@@ -47,6 +47,13 @@ class Blockchain:
         except Exception as e:
             raise Exception(f'inside is_valid_chain: {e}')
 
+    @staticmethod
+    def from_json(chain_json):
+        blockchain = Blockchain()
+        blockchain.chain = list(map(lambda block_json: Block.from_json(block_json), chain_json))
+        return blockchain
+
+
 
 
 def main():

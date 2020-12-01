@@ -26,11 +26,11 @@ class Listener(SubscribeCallback):
         print(f'\nChannel:{message_obj.channel}\nMessage: {message_obj.message}')
 
         if message_obj.channel == CHANNELS['BLOCK']:
-            block = Block.to_block(message_obj.message)
+            block = Block.from_json(message_obj.message)
             new_chain = self.blockchain.chain[:]
             new_chain.append(block)
             try:
-                self.blockchain.replace_chain(new_chain)
+                self.blockchain.replace_chain(new_chain.chain)
                 print(f'\n-- Blockchain replaced successfully')
             except Exception as e:
                 raise Exception(f'\n-- Unable to replace chain: {e}')
