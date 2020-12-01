@@ -24,6 +24,8 @@ class Block:
         self.data={}
         self.last_hash = None
         self.hash = None
+        self.arrival_time = None
+        self.dispatch_time = None
     
     def add_attr(self, key, value):
         self.data[key] = value
@@ -59,9 +61,17 @@ class Block:
             if block.hash != crypto_hash(block):
                 raise Exception('The block hash is incorrect')
         except Exception as e:
-            print(f'inside is_valid_block: {e}')
+            raise Exception(f'inside is_valid_block: {e}')
 
-
+    @staticmethod
+    def to_block(data):
+        block = Block()
+        block.data = data['data']
+        block.arrival_time = data['arrival_time']
+        block.dispatch_time = data['dispatch_time']
+        block.last_hash = data['last_hash']
+        block.hash = data['hash']
+        return block
 
 
 def main():

@@ -20,10 +20,11 @@ class Blockchain:
             raise Exception('Cannot replace, new chain must be longer')
         try:
             Blockchain.is_valid_chain(chain)
+            self.chain = chain 
         except Exception as e:
-            raise Exception('Cannot replace, new chain is invalid: {e}')
+            raise Exception(f'Cannot replace, new chain is invalid: {e}')
 
-        self.chain = chain 
+        
 
     def to_json(self):
         return list(map(lambda block: block.to_json(),self.chain))
@@ -44,7 +45,7 @@ class Blockchain:
                 last_block = chain[i-1]
                 Block.is_valid_block(last_block,block)
         except Exception as e:
-            print(f'inside is_valid_chain: {e}')
+            raise Exception(f'inside is_valid_chain: {e}')
 
 
 

@@ -9,7 +9,7 @@ from backend.pubsub import PubSub
 
 app = Flask(__name__)
 chain = Blockchain()
-pubsub =PubSub()
+pubsub =PubSub(chain)
 
 
 
